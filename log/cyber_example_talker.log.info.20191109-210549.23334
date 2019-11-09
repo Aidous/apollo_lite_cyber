@@ -1,0 +1,52 @@
+Log file created at: 2019/11/09 21:05:49
+Running on machine: aidous-ThinkPad-Edge-E540
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1109 21:05:49.760473 23334 global_data.cc:155]  host ip: 192.168.1.105
+W1109 21:05:49.761441 23334 scheduler_factory.cc:63]  No sched conf found, use default conf.
+I1109 21:05:49.761842 23336 processor.cc:80]  processor_tid: 23336
+I1109 21:05:49.761893 23337 processor.cc:80]  processor_tid: 23337
+I1109 21:05:49.761960 23338 processor.cc:80]  processor_tid: 23338
+I1109 21:05:49.761983 23339 processor.cc:80]  processor_tid: 23339
+I1109 21:05:49.762185 23341 processor.cc:80]  processor_tid: 23341
+I1109 21:05:49.762212 23342 processor.cc:80]  processor_tid: 23342
+I1109 21:05:49.762224 23340 processor.cc:80]  processor_tid: 23340
+I1109 21:05:49.762343 23344 processor.cc:80]  processor_tid: 23344
+I1109 21:05:49.762351 23343 processor.cc:80]  processor_tid: 23343
+I1109 21:05:49.762353 23345 processor.cc:80]  processor_tid: 23345
+I1109 21:05:49.762404 23346 processor.cc:80]  processor_tid: 23346
+I1109 21:05:49.762434 23347 processor.cc:80]  processor_tid: 23347
+I1109 21:05:49.762482 23348 processor.cc:80]  processor_tid: 23348
+I1109 21:05:49.762540 23349 processor.cc:80]  processor_tid: 23349
+I1109 21:05:49.762578 23350 processor.cc:80]  processor_tid: 23350
+I1109 21:05:49.762603 23334 init.cc:107]  Register exit handle succ.
+I1109 21:05:49.762614 23351 processor.cc:80]  processor_tid: 23351
+I1109 21:05:49.766054 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:50.766224 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:51.766221 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:52.766228 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:53.766187 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:54.766230 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:55.766155 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:56.766212 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:57.766117 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:58.766145 23334 talker.cc:42]  talker sent a message!
+I1109 21:05:59.766193 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:00.766158 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:01.766150 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:02.766155 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:03.766150 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:04.766149 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:05.766142 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:06.766182 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:07.766129 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:08.766266 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:09.766214 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:10.767580 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:11.766342 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:12.766392 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:13.766491 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:14.766446 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:15.766480 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:16.766582 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:17.766429 23334 talker.cc:42]  talker sent a message!
+I1109 21:06:18.766472 23334 talker.cc:42]  talker sent a message!

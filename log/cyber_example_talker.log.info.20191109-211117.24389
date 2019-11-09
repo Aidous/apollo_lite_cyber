@@ -1,0 +1,38 @@
+Log file created at: 2019/11/09 21:11:17
+Running on machine: aidous-ThinkPad-Edge-E540
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1109 21:11:17.885349 24389 global_data.cc:155]  host ip: 192.168.1.105
+W1109 21:11:17.885871 24389 scheduler_factory.cc:63]  No sched conf found, use default conf.
+I1109 21:11:17.886101 24391 processor.cc:80]  processor_tid: 24391
+I1109 21:11:17.886126 24392 processor.cc:80]  processor_tid: 24392
+I1109 21:11:17.886225 24394 processor.cc:80]  processor_tid: 24394
+I1109 21:11:17.886225 24393 processor.cc:80]  processor_tid: 24393
+I1109 21:11:17.886346 24396 processor.cc:80]  processor_tid: 24396
+I1109 21:11:17.886375 24395 processor.cc:80]  processor_tid: 24395
+I1109 21:11:17.886497 24398 processor.cc:80]  processor_tid: 24398
+I1109 21:11:17.886660 24401 processor.cc:80]  processor_tid: 24401
+I1109 21:11:17.886678 24399 processor.cc:80]  processor_tid: 24399
+I1109 21:11:17.886778 24402 processor.cc:80]  processor_tid: 24402
+I1109 21:11:17.886791 24404 processor.cc:80]  processor_tid: 24404
+I1109 21:11:17.886852 24389 init.cc:107]  Register exit handle succ.
+I1109 21:11:17.886860 24405 processor.cc:80]  processor_tid: 24405
+I1109 21:11:17.887174 24397 processor.cc:80]  processor_tid: 24397
+I1109 21:11:17.887238 24400 processor.cc:80]  processor_tid: 24400
+I1109 21:11:17.887326 24403 processor.cc:80]  processor_tid: 24403
+I1109 21:11:17.888131 24406 processor.cc:80]  processor_tid: 24406
+I1109 21:11:17.892571 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:18.892745 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:19.892742 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:20.892732 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:21.892740 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:22.892737 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:23.892745 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:24.893875 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:25.892884 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:26.892817 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:27.892896 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:28.892877 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:29.892827 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:30.892972 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:31.892972 24389 talker.cc:42]  talker sent a message!
+I1109 21:11:32.892709 24389 talker.cc:42]  talker sent a message!
