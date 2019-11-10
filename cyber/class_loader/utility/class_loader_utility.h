@@ -75,6 +75,7 @@ std::vector<std::string> GetValidClassNames(ClassLoader* loader);
 template <typename Derived, typename Base>
 void RegisterClass(const std::string& class_name,
                    const std::string& base_class_name) {
+
   AINFO << "registerclass:" << class_name << "," << base_class_name << ","
         << GetCurLoadingLibraryName();
 

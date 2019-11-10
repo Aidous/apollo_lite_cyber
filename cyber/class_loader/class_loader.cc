@@ -35,6 +35,8 @@ bool ClassLoader::LoadLibrary() {
   std::lock_guard<std::mutex> lck(loadlib_ref_count_mutex_);
   ++loadlib_ref_count_;
   AINFO << "Begin LoadLibrary: " << library_path_;
+  //@note: add library path. aidos.
+//  utility::SetCurLoadingLibraryName(library_path_);
   return utility::LoadLibrary(library_path_, this);
 }
 

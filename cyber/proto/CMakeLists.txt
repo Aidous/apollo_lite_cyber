@@ -21,7 +21,7 @@ PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${PROTOS})
 
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
-add_library(cyber_proto ${PROTO_SRCS} ${PROTO_HDRS})
+add_library(cyber_proto SHARED ${PROTO_SRCS} ${PROTO_HDRS})
 target_link_libraries(cyber_proto ${PROTOBUF_LIBRARIES})
 add_library(cyber::proto ALIAS cyber_proto)
 

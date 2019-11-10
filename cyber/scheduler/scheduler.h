@@ -34,7 +34,7 @@
 #include "cyber/common/types.h"
 #include "cyber/croutine/croutine.h"
 #include "cyber/croutine/routine_factory.h"
-#include "cyber/proto/choreography_conf.pb.h"
+//#include "cyber/proto/choreography_conf.pb.h"
 #include "cyber/scheduler/common/mutex_wrapper.h"
 
 namespace apollo {

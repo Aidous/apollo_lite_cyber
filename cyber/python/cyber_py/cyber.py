@@ -41,8 +41,8 @@ sys.path.append(CYBER_PATH + "/lib/python/")
 sys.path.append(CYBER_DIR + "/python/")
 sys.path.append(CYBER_DIR + "/cyber/")
 
-_CYBER_INIT = importlib.import_module('_cyber_init')
-_CYBER_NODE = importlib.import_module('_cyber_node')
+_CYBER_INIT = importlib.import_module('lib_cyber_init')
+_CYBER_NODE = importlib.import_module('lib_cyber_node')
 
 
 ##

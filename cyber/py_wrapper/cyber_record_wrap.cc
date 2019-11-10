@@ -558,7 +558,7 @@ static PyMethodDef _cyber_record_methods[] = {
 };
 
 /// Init function of this module
-PyMODINIT_FUNC init_cyber_record(void) {
+PyMODINIT_FUNC initlib_cyber_record(void) {
   AINFO << "init _cyber_record";
-  Py_InitModule("_cyber_record", _cyber_record_methods);
+  Py_InitModule("lib_cyber_record", _cyber_record_methods);
 }

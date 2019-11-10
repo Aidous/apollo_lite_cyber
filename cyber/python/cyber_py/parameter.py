@@ -33,7 +33,7 @@ sys.path.append(CYBER_PATH + "/lib/python/")
 sys.path.append(CYBER_DIR + "/python/")
 sys.path.append(CYBER_DIR + "/cyber/")
 
-_CYBER_PARAM = importlib.import_module('_cyber_parameter')
+_CYBER_PARAM = importlib.import_module('lib_cyber_parameter')
 
 
 class Parameter(object):

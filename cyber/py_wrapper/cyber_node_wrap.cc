@@ -931,6 +931,6 @@ static PyMethodDef _cyber_node_methods[] = {
 };
 
 /// Init function of this module
-PyMODINIT_FUNC init_cyber_node(void) {
-  Py_InitModule("_cyber_node", _cyber_node_methods);
+PyMODINIT_FUNC initlib_cyber_node(void) {
+  Py_InitModule("lib_cyber_node", _cyber_node_methods);
 }

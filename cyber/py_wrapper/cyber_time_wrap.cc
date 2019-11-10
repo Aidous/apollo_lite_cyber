@@ -334,7 +334,7 @@ static PyMethodDef _cyber_time_methods[] = {
 };
 
 /// Init function of this module
-PyMODINIT_FUNC init_cyber_time(void) {
+PyMODINIT_FUNC initlib_cyber_time(void) {
   AINFO << "init _cyber_time";
-  Py_InitModule("_cyber_time", _cyber_time_methods);
+  Py_InitModule("lib_cyber_time", _cyber_time_methods);
 }

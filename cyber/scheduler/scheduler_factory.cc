@@ -55,7 +55,10 @@ Scheduler* Instance() {
       std::string policy("classic");
       std::string conf("conf/");
       conf.append(GlobalData::Instance()->ProcessGroup()).append(".conf");
+//      AWARN << "conf: " << conf << " " << WorkRoot();
+//      AWARN << "SS: " << GlobalData::Instance()->ProcessGroup();
       auto cfg_file = GetAbsolutePath(WorkRoot(), conf);
+      AWARN << "config directory: " <<cfg_file;
       apollo::cyber::proto::CyberConfig cfg;
       if (PathExists(cfg_file) && GetProtoFromFile(cfg_file, &cfg)) {
         policy = cfg.scheduler_conf().policy();

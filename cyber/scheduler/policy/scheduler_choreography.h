@@ -23,7 +23,7 @@
 #include <vector>
 
 #include "cyber/croutine/croutine.h"
-#include "cyber/proto/choreography_conf.pb.h"
+//#include "cyber/proto/choreography_conf.pb.h"
 #include "cyber/scheduler/scheduler.h"
 
 namespace apollo {

@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.5.1)
 
 add_subdirectory(proto)
 
-add_library(cyber_common_component_example
-			common_component_example/common_component_example.cc)
+add_library(cyber_common_component_example SHARED
+			common_component_example/common_component_example.cc
+			../state.cc)
 target_link_libraries(cyber_common_component_example
 					  cyber::class_loader
 					  cyber::component
@@ -11,8 +12,9 @@ target_link_libraries(cyber_common_component_example
 					  cyber::cyber)
 add_library(cyber::common_component_example ALIAS cyber_common_component_example)
 
-add_library(cyber_time_component_example
-			timer_component_example/timer_component_example.cc)
+add_library(cyber_time_component_example SHARED
+			timer_component_example/timer_component_example.cc
+			../state.cc)
 target_link_libraries(cyber_time_component_example
 					  cyber::class_loader
 					  cyber::component

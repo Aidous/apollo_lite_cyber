@@ -28,7 +28,7 @@
 #include "cyber/common/global_data.h"
 #include "cyber/common/log.h"
 #include "cyber/common/types.h"
-#include "cyber/proto/role_attributes.pb.h"
+//#include "cyber/proto/role_attributes.pb.h"
 #include "cyber/service_discovery/role/role.h"
 #include "cyber/task/task.h"
 #include "cyber/time/time.h"

@@ -19,7 +19,6 @@
 #include <limits>
 
 #include "cyber/common/log.h"
-#include "cyber/transport/qos/qos_profile_conf.h"
 
 namespace apollo {
 namespace cyber {

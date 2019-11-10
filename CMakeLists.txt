@@ -8,6 +8,10 @@ endif()
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_BUILD_TYPE "Release")
+
+set(CMAKE_CXX_FLAGS "-w -fPIC -std=c++11 ${CMAKE_CXX_FLAGS}")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 add_subdirectory(deps/googletest EXCLUDE_FROM_ALL)

@@ -34,7 +34,7 @@ sys.path.append(CYBER_PATH + "/python/cyber_py")
 sys.path.append(CYBER_DIR + "/python/")
 sys.path.append(CYBER_DIR + "/cyber/")
 
-_CYBER_RECORD = importlib.import_module('_cyber_record')
+_CYBER_RECORD = importlib.import_module('lib_cyber_record')
 PyBagMessage = collections.namedtuple('PyBagMessage',
                                       'topic message data_type timestamp')
 

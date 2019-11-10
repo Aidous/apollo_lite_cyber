@@ -34,7 +34,7 @@ sys.path.append(CYBER_PATH + "/python/cyber_py")
 sys.path.append(CYBER_DIR + "/python/")
 sys.path.append(CYBER_DIR + "/cyber/")
 
-_CYBER_TOPOLOGY_MANAGER = importlib.import_module('_cyber_topology_manager')
+_CYBER_TOPOLOGY_MANAGER = importlib.import_module('lib_cyber_topology_manager')
 
 
 class Topology_Manager(object):

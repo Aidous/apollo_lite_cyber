@@ -19,7 +19,8 @@
 
 #include <string>
 
-#include "cyber/proto/qos_profile.pb.h"
+//#include "cyber/proto/qos_profile.pb.h"
+#include "cyber/transport/qos/qos_profile_conf.h"
 #include "fastrtps/attributes/PublisherAttributes.h"
 #include "fastrtps/attributes/SubscriberAttributes.h"
 

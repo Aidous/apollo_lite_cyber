@@ -635,7 +635,7 @@ static PyMethodDef _cyber_parameter_methods[] = {
 };
 
 /// Init function of this module
-PyMODINIT_FUNC init_cyber_parameter(void) {
+PyMODINIT_FUNC initlib_cyber_parameter(void) {
   AINFO << "init _cyber_parameter";
-  Py_InitModule("_cyber_parameter", _cyber_parameter_methods);
+  Py_InitModule("lib_cyber_parameter", _cyber_parameter_methods);
 }
