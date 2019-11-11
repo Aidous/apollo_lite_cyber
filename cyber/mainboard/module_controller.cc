@@ -21,10 +21,13 @@
 #include "cyber/common/environment.h"
 #include "cyber/common/file.h"
 #include "cyber/component/component_base.h"
+#include "cyber/class_loader/utility/class_loader_utility.h"
 
 namespace apollo {
 namespace cyber {
 namespace mainboard {
+
+using apollo::cyber::class_loader::utility::SetCurLoadingLibraryName;
 
 void ModuleController::Clear() {
   for (auto& component : component_list_) {
@@ -63,6 +66,7 @@ bool ModuleController::LoadAll() {
   common::GlobalData::Instance()->SetComponentNums(total_component_nums);
   for (auto module_path : paths) {
     AINFO << "Start initialize dag: " << module_path;
+    SetCurLoadingLibraryName(module_path);  // @note aidos add for lib path.
     if (!LoadModule(module_path)) {
       AERROR << "Failed to load module: " << module_path;
       return false;

@@ -33,5 +33,6 @@ class TimerComponentSample : public TimerComponent {
 
  private:
   std::shared_ptr<Writer<Driver>> driver_writer_ = nullptr;
+  std::shared_ptr<Writer<Driver>> driver_writer1_ = nullptr;
 };
 CYBER_REGISTER_COMPONENT(TimerComponentSample)

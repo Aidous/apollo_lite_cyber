@@ -4,7 +4,8 @@ add_library(cyber_logger logger_util.cc
 			async_logger.cc
 			log_file_object.cc
 			logger.cc)
-target_link_libraries(cyber_logger cyber::data)
+target_link_libraries(cyber_logger cyber::proto
+					  cyber::data)
 add_library(cyber::logger ALIAS cyber_logger)
 
 ## gtest

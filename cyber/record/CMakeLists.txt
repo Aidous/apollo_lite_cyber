@@ -11,6 +11,10 @@ add_library(cyber_record header_builder.cc
 			file/record_file_reader.cc
 			file/record_file_writer.cc)
 set_target_properties(cyber_record PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(cyber_record cyber::proto
+					  cyber::common
+					  cyber::time
+					  cyber::cyber)
 add_library(cyber::record ALIAS cyber_record)
 
 #add_executable(record_file_test file/record_file_test.cc)

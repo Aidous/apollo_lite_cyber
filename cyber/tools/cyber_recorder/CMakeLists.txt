@@ -18,11 +18,11 @@ target_link_libraries(cyber_recorder cyber::py_wrapper
         )
 add_library(cyber::recorder ALIAS cyber_recorder)
 
-add_executable(cyber_recorder_app main.cc)
-target_link_libraries(cyber_recorder_app cyber_recorder)
+add_executable(cyber_app main.cc)
+target_link_libraries(cyber_app cyber_recorder)
 
 install(TARGETS cyber_recorder
-		cyber_recorder_app
+		cyber_app
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin

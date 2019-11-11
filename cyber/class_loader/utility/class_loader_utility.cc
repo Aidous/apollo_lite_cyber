@@ -97,13 +97,12 @@ ClassFactoryVector GetAllClassFactoryObjects() {
 
   ClassFactoryVector all_class_factory_objs;
   BaseToClassFactoryMapMap& factory_map_map = GetClassFactoryMapMap();
-  for (auto& baseclass_map : factory_map_map) {
-      AWARN << "BBBBBBBBBBBBb";
+    AWARN << "BaseToClassFactoryMapMap size: " << factory_map_map.size();
+
+    for (auto& baseclass_map : factory_map_map) {
       ClassFactoryVector objs = GetAllClassFactoryObjects(baseclass_map.second);
-//      AWARN << "CCCCCCCCCCCCCc" << objs[0]->GetRelativeLibraryPath();
       all_class_factory_objs.insert(all_class_factory_objs.end(), objs.begin(),
                                   objs.end());
-      AWARN << "DDDDDDDDDDDDDDd";
   }
 
   return all_class_factory_objs;
@@ -113,10 +112,10 @@ ClassFactoryVector GetAllClassFactoryObjectsOfLibrary(
     const std::string& library_path) {
   ClassFactoryVector all_class_factory_objs = GetAllClassFactoryObjects();
   ClassFactoryVector library_class_factory_objs;
-    AWARN <<"EEEEEEEEEEEEEe";
     for (auto& class_factory_obj : all_class_factory_objs) {
-      AWARN <<"AAAAAAAAAAAa";
-    if (class_factory_obj->GetRelativeLibraryPath() == library_path) {
+//      AWARN << "Path: " << class_factory_obj->GetRelativeLibraryPath();
+      // @note: comment for register class doesn't has a lib path. by aidos.
+    /*if (class_factory_obj->GetRelativeLibraryPath() == library_path) */{
       library_class_factory_objs.emplace_back(class_factory_obj);
     }
   }
@@ -242,12 +241,16 @@ bool LoadLibrary(const std::string& library_path, ClassLoader* loader) {
     return false;
   }
 
-  AWARN << "aaa: "<<library_path;
-
-  auto num_lib_objs = GetAllClassFactoryObjectsOfLibrary(library_path).size();
+  ClassFactoryVector class_factory_objs =
+      GetAllClassFactoryObjectsOfLibrary(library_path);
+  auto num_lib_objs = class_factory_objs.size();
   if (num_lib_objs == 0) {
     AWARN << "Class factory objs counts is 0, maybe registerclass failed.";
-  }
+  }else {
+    for (int i = 0; i < num_lib_objs; ++i) {
+      class_factory_objs[i]->AddOwnedClassLoader(loader);
+    }
+  }  // @note: add owner for classobjs. by aidos.
 
   std::lock_guard<std::recursive_mutex> lck(GetLibPathPocoShareLibMutex());
   LibpathPocolibVector& opened_libraries = GetLibPathPocoShareLibVector();

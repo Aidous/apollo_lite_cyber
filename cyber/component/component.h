@@ -245,7 +245,6 @@ bool Component<M0, M1, NullType, NullType>::Initialize(
   }
 
   bool is_reality_mode = GlobalData::Instance()->IsRealityMode();
-
   ReaderConfig reader_cfg;
   reader_cfg.channel_name = config.readers(1).channel();
   reader_cfg.qos_profile.CopyFrom(config.readers(1).qos_profile());

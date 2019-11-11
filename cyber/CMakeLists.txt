@@ -96,6 +96,7 @@ add_executable(mainboard mainboard/mainboard.cc
 			   mainboard/module_argument.cc
 			   mainboard/module_controller.cc)
 target_link_libraries(mainboard pthread cyber::proto
+					  cyber::time_component_example
 					  cyber::cyber_core)
 
 install(TARGETS cyber_binary

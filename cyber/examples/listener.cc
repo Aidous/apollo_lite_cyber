@@ -18,8 +18,8 @@
 #include "cyber/examples/proto/examples.pb.h"
 
 void MessageCallback(
-    const std::shared_ptr<apollo::cyber::examples::proto::Chatter>& msg) {
-  AINFO << "Received message seq-> " << msg->seq();
+    const std::shared_ptr<apollo::cyber::examples::proto::Driver>& msg) {
+  AINFO << "Received message seq-> " << msg->msg_id();
   AINFO << "msgcontent->" << msg->content();
 }
 
@@ -30,8 +30,8 @@ int main(int argc, char* argv[]) {
   auto listener_node = apollo::cyber::CreateNode("listener");
   // create listener
   auto listener =
-      listener_node->CreateReader<apollo::cyber::examples::proto::Chatter>(
-          "channel/chatter", MessageCallback);
+      listener_node->CreateReader<apollo::cyber::examples::proto::Driver>(
+          "/carstatus/channel1", MessageCallback);
   apollo::cyber::WaitForShutdown();
   return 0;
 }

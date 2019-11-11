@@ -67,6 +67,9 @@ std::vector<std::string> ClassLoader::GetValidClassNames() {
 template <typename Base>
 bool ClassLoader::IsClassValid(const std::string& class_name) {
   std::vector<std::string> valid_classes = GetValidClassNames<Base>();
+  for (int i = 0; i < valid_classes.size(); ++i) {
+    AWARN << "class name: " << valid_classes[i];
+  }
   return (std::find(valid_classes.begin(), valid_classes.end(), class_name) !=
           valid_classes.end());
 }

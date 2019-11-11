@@ -71,6 +71,7 @@ GlobalData::GlobalData() {
   if (run_mode_val != nullptr) {
     std::string run_mode_str(run_mode_val);
     if (run_mode_str == "simulation") {
+      AWARN << "Cyber Mode is simulation.";
       is_reality_mode_ = false;
     }
   }
