@@ -20,7 +20,7 @@ export PYTHONPATH=${PYTHON_LD_PATH}:${CYBER_PATH}/python:$PYTHONPATH
 
 export CYBER_DOMAIN_ID=80
 export CYBER_IP=127.0.0.1
-export CYBER_RUN_MODE=reality  # reality simulation
+export CYBER_RUN_MODE=reality  # reality or simulation
 
 export GLOG_log_dir=${CYBER_PATH}/../log  # add for glog dir. # /apollo/data/log
 export GLOG_alsologtostderr=1   # if print all meesage to terminal else 0.
