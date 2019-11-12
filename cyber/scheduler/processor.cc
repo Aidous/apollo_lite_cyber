@@ -83,9 +83,11 @@ void Processor::Run() {
     if (likely(context_ != nullptr)) {
       auto croutine = context_->NextRoutine();
       if (croutine) {
+//        AWARN << "begin runnning......";
         croutine->Resume();
         croutine->Release();
       } else {
+//        AWARN << "waiting..........";
         context_->Wait();
       }
     } else {

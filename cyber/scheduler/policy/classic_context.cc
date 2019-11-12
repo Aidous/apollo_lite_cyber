@@ -43,6 +43,7 @@ ClassicContext::ClassicContext(const std::string& group_name) {
 }
 
 void ClassicContext::InitGroup(const std::string& group_name) {
+  AWARN << "init group: " << group_name;
   multi_pri_rq_ = &cr_group_[group_name];
   lq_ = &rq_locks_[group_name];
   mtx_wrapper_ = &mtx_wq_[group_name];
@@ -58,7 +59,19 @@ std::shared_ptr<CRoutine> ClassicContext::NextRoutine() {
 
   for (int i = MAX_PRIO - 1; i >= 0; --i) {
     ReadLockGuard<AtomicRWLock> lk(lq_->at(i));
-    for (auto& cr : multi_pri_rq_->at(i)) {
+
+//    if (multi_pri_rq_->at(i).size() > 0) {
+//        AWARN << "find task.";
+//    }
+
+//      if (cr_group_[current_grp].at(i).size() > 0) {
+//          AWARN << "find task. " << multi_pri_rq_->at(i).size();
+//      }
+
+      // @note: change multi_pri_rq_->at(i)
+      // to --> cr_group_[current_grp].at(i). by aidos.
+    for (auto& cr : cr_group_[current_grp].at(i)
+        /*multi_pri_rq_->at(i)*/) {
       if (!cr->Acquire()) {
         continue;
       }

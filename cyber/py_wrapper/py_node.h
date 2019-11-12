@@ -43,7 +43,31 @@
 namespace apollo {
 namespace cyber {
 
+// aidos add for node init.
+bool py_init(const std::string& module_name) {
+  static bool inited = false;
+  if (inited) {
+    AINFO << "cyber already inited.";
+    return true;
+  }
+
+  if (!Init(module_name.c_str())) {
+    AERROR << "cyber::Init failed:" << module_name;
+    return false;
+  }
+  inited = true;
+  AINFO << "cyber init succ.";
+  return true;
+}
+
+bool py_ok() { return cyber::OK(); }
+
+void py_shutdown() { return cyber::Clear(); }
+
+void py_waitforshutdown() { return cyber::WaitForShutdown(); }
+
 bool py_is_shutdown() { return cyber::IsShutdown(); }
+
 bool py_init() {
   static bool inited = false;
 

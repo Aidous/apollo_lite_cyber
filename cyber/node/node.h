@@ -224,6 +224,9 @@ auto Node::CreateReader(const ReaderConfig& config,
              "exists.";
     return nullptr;
   }
+
+  AWARN << "Create_reader by ReaderConfig: " << config.channel_name;
+
   auto reader =
       node_channel_impl_->template CreateReader<MessageT>(config, reader_func);
   if (reader != nullptr) {
@@ -242,6 +245,9 @@ auto Node::CreateReader(const std::string& channel_name,
              "exists.";
     return nullptr;
   }
+
+    AWARN << "Create_reader by channel_name: " << channel_name;
+
   auto reader = node_channel_impl_->template CreateReader<MessageT>(
       channel_name, reader_func);
   if (reader != nullptr) {

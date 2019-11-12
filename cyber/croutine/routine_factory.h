@@ -53,15 +53,16 @@ RoutineFactory CreateRoutineFactory(
   RoutineFactory factory;
   factory.SetDataVisitor(dv);
   factory.create_routine = [=]() {
-    return [=]() {
+    return [=]()
+    {
       std::shared_ptr<M0> msg;
       for (;;) {
         CRoutine::GetCurrentRoutine()->set_state(RoutineState::DATA_WAIT);
         if (dv->TryFetch(msg)) {
-          f(msg);
+            f(msg);
           CRoutine::Yield(RoutineState::READY);
         } else {
-          CRoutine::Yield();
+            CRoutine::Yield();
         }
       }
     };

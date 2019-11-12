@@ -49,14 +49,18 @@ bool Scheduler::CreateTask(std::function<void()>&& func,
 
   auto task_id = GlobalData::RegisterTaskName(name);
 
-  auto cr = std::make_shared<CRoutine>(func);
+  auto cr = std::make_shared<CRoutine>(func);  // construct CRoutine obj.
   cr->set_id(task_id);
   cr->set_name(name);
+
   AINFO << "create croutine: " << name;
 
   if (!DispatchTask(cr)) {
+    AWARN << "DispatchTask faild !";
     return false;
   }
+
+  AINFO << "DispatchTask end. " << name;
 
   if (visitor != nullptr) {
     visitor->RegisterNotifyCallback([this, task_id, name]() {

@@ -37,12 +37,15 @@ std::once_flag pool_init_flag;
 
 void CRoutineEntry(void *arg) {
   CRoutine *r = static_cast<CRoutine *>(arg);
+  AWARN << "runnnnnnnnnnnnnnnnnnnnn";
   r->Run();
   CRoutine::Yield(RoutineState::FINISHED);
 }
 }  // namespace
 
 CRoutine::CRoutine(const std::function<void()> &func) : func_(func) {
+    AWARN << "CRoutine.";
+
   std::call_once(pool_init_flag, [&]() {
     uint32_t routine_num = common::GlobalData::Instance()->ComponentNums();
     auto &global_conf = common::GlobalData::Instance()->Config();
@@ -60,7 +63,7 @@ CRoutine::CRoutine(const std::function<void()> &func) : func_(func) {
              "[routine_num] in config file.";
     context_.reset(new RoutineContext());
   }
-
+    AWARN << "MakeContext.";
   MakeContext(CRoutineEntry, this, context_.get());
   state_ = RoutineState::READY;
   updated_.test_and_set(std::memory_order_release);
@@ -69,6 +72,7 @@ CRoutine::CRoutine(const std::function<void()> &func) : func_(func) {
 CRoutine::~CRoutine() { context_ = nullptr; }
 
 RoutineState CRoutine::Resume() {
+    AWARN << "Resume begin. ";
   if (unlikely(force_stop_)) {
     state_ = RoutineState::FINISHED;
     return state_;

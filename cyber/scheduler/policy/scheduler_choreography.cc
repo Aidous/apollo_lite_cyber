@@ -123,6 +123,7 @@ bool SchedulerChoreography::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   // we use multi-key mutex to prevent race condition
   // when del && add cr with same crid
   MutexWrapper* wrapper = nullptr;
+  AWARN << "SchedulerChoreography DispatchTask begin..................";
   if (!id_map_mutex_.Get(cr->id(), &wrapper)) {
     {
       std::lock_guard<std::mutex> wl_lg(cr_wl_mtx_);
@@ -143,7 +144,6 @@ bool SchedulerChoreography::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
       cr->set_processor_id(taskconf.processor());
     }
   }
-
   {
     WriteLockGuard<AtomicRWLock> lk(id_cr_lock_);
     if (id_cr_.find(cr->id()) != id_cr_.end()) {
@@ -163,7 +163,6 @@ bool SchedulerChoreography::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
       AWARN << cr->name() << " prio great than MAX_PRIO.";
       cr->set_priority(MAX_PRIO - 1);
     }
-
     cr->set_group_name(DEFAULT_GROUP_NAME);
 
     // Enqueue task to pool runqueue.

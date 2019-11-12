@@ -31,6 +31,71 @@ T PyObjectToPtr(PyObject *pyobj, const std::string &type_ptr) {
   return obj_ptr;
 }
 
+static PyObject *cyber_py_init(PyObject *self, PyObject *args) {
+  char *data = nullptr;
+  Py_ssize_t len = 0;
+  if (!PyArg_ParseTuple(args, const_cast<char *>("s#:cyber_py_init"), &data,
+                        &len)) {
+    AERROR << "cyber_py_init:PyArg_ParseTuple failed!";
+    Py_RETURN_FALSE;
+  }
+  std::string module_name(data, len);
+  bool is_init = apollo::cyber::py_init();
+  if (is_init) {
+    Py_RETURN_TRUE;
+  } else {
+    Py_RETURN_FALSE;
+  }
+}
+
+
+static PyObject *cyber_py_init_withname(PyObject *self, PyObject *args) {
+    char *data = nullptr;
+    Py_ssize_t len = 0;
+    if (!PyArg_ParseTuple(args, const_cast<char *>("s#:cyber_py_init"), &data,
+                          &len)) {
+        AERROR << "cyber_py_init:PyArg_ParseTuple failed!";
+        Py_RETURN_FALSE;
+    }
+    std::string module_name(data, len);
+    bool is_init = apollo::cyber::py_init(module_name);
+    if (is_init) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
+
+static PyObject *cyber_py_ok(PyObject *self, PyObject *args) {
+    bool is_ok = apollo::cyber::py_ok();
+    if (is_ok) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
+
+static PyObject *cyber_py_shutdown(PyObject *self, PyObject *args) {
+    apollo::cyber::py_shutdown();
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+static PyObject *cyber_py_is_shutdown(PyObject *self, PyObject *args) {
+    bool is_shutdown = apollo::cyber::py_is_shutdown();
+    if (is_shutdown) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
+
+static PyObject *cyber_py_waitforshutdown(PyObject *self, PyObject *args) {
+    apollo::cyber::py_waitforshutdown();
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
 PyObject *cyber_new_PyWriter(PyObject *self, PyObject *args) {
   char *channel_name = nullptr;
   char *data_type = nullptr;
@@ -824,6 +889,15 @@ student *cyber_student() {
   return stu1;
 }
 
+//static PyObject *cyber_py_ok(PyObject *self, PyObject *args) {
+//    bool is_ok = apollo::cyber::py_OK();
+//    if (is_ok) {
+//        Py_RETURN_TRUE;
+//    } else {
+//        Py_RETURN_FALSE;
+//    }
+//}
+
 PyObject *cyber_test1(PyObject *self, PyObject *args) {
   char *channel = nullptr;
   char *data_type = nullptr;
@@ -867,6 +941,12 @@ PyObject *cyber_test1(PyObject *self, PyObject *args) {
 /////////////////////////////////////////////////////////////////////
 static PyMethodDef _cyber_node_methods[] = {
     // PyWriter fun
+    {"py_init", cyber_py_init, METH_VARARGS, ""},
+    {"py_init_withname", cyber_py_init_withname, METH_VARARGS, ""},
+    {"py_ok", cyber_py_ok, METH_NOARGS, ""},
+    {"py_shutdown", cyber_py_shutdown, METH_NOARGS, ""},
+    {"py_is_shutdown", cyber_py_is_shutdown, METH_NOARGS, ""},
+    {"py_waitforshutdown", cyber_py_waitforshutdown, METH_NOARGS, ""},
     {"new_PyWriter", cyber_new_PyWriter, METH_VARARGS, ""},
     {"delete_PyWriter", cyber_delete_PyWriter, METH_VARARGS, ""},
     {"PyWriter_write", cyber_PyWriter_write, METH_VARARGS, ""},

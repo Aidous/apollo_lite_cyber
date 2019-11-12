@@ -54,35 +54,35 @@ def init(module_name="cyber_py"):
     """
     init cyber environment.
     """
-    return _CYBER_INIT.py_init(module_name)
+    return _CYBER_NODE.py_init(module_name)
 
 
 def ok():
     """
     is cyber envi ok.
     """
-    return _CYBER_INIT.py_ok()
+    return _CYBER_NODE.py_ok()
 
 
 def shutdown():
     """
     shutdown cyber envi.
     """
-    return _CYBER_INIT.py_shutdown()
+    return _CYBER_NODE.py_shutdown()
 
 
 def is_shutdown():
     """
     is cyber shutdown.
     """
-    return _CYBER_INIT.py_is_shutdown()
+    return _CYBER_NODE.py_is_shutdown()
 
 
 def waitforshutdown():
     """
     wait until the cyber is shutdown.
     """
-    return _CYBER_INIT.py_waitforshutdown()
+    return _CYBER_NODE.py_waitforshutdown()
 
 # //////////////////////////////class//////////////////////////////
 
@@ -350,7 +350,7 @@ class Node(object):
         """
         spin for every 0.002s.
         """
-        while not _CYBER_INIT.py_is_shutdown():
+        while not _CYBER_NODE.py_is_shutdown():
             time.sleep(0.002)
 
 

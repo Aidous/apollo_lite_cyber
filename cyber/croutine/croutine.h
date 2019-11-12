@@ -123,12 +123,14 @@ class CRoutine {
 };
 
 inline void CRoutine::Yield(const RoutineState &state) {
+  AWARN << "Yield by state.";
   auto routine = GetCurrentRoutine();
   routine->set_state(state);
   SwapContext(GetCurrentRoutine()->GetStack(), GetMainStack());
 }
 
 inline void CRoutine::Yield() {
+  AWARN << "Yield";
   SwapContext(GetCurrentRoutine()->GetStack(), GetMainStack());
 }
 
@@ -140,7 +142,7 @@ inline RoutineContext *CRoutine::GetContext() { return context_.get(); }
 
 inline char **CRoutine::GetStack() { return &(context_->sp); }
 
-inline void CRoutine::Run() { func_(); }
+inline void CRoutine::Run() { func_(); }  // run lambda func.
 
 inline void CRoutine::set_state(const RoutineState &state) { state_ = state; }
 

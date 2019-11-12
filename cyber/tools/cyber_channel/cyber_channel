@@ -378,7 +378,6 @@ def _channel_cmd_echo(argv):
 
 def _printallusage():
     print("""cyber_channel is a command-line tool for printing information about CyberRT Channels.
-
 Commands:
 \tcyber_channel list\tlist active channels
 \tcyber_channel info\tprint information about active channel
@@ -386,7 +385,6 @@ Commands:
 \tcyber_channel hz\tdisplay publishing rate of channel
 \tcyber_channel bw\tdisplay bandwidth used by channel
 \tcyber_channel type\tprint channel type
-
 Type cyber_channel <command> -h for more detailed usage, e.g. 'cyber_channel echo -h'
 """)
     sys.exit(getattr(os, 'EX_USAGE', 1))
@@ -397,6 +395,7 @@ if __name__ == '__main__':
 
     cyber.init()
 
+    print (cyber.ok())
     argv = sys.argv[0:]
     command = argv[1]
     if command == 'list':

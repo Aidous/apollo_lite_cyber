@@ -62,6 +62,7 @@ GlobalData::GlobalData() {
     process_group_ = GetFileName(prog_path) + "_" + std::to_string(process_id_);
     free(prog_path);
   } else {
+    AWARN << "can not find" << GetFileName(prog_path) << "use cyber_default_group.";
     process_group_ = "cyber_default_" + std::to_string(process_id_);
   }
   is_reality_mode_ =

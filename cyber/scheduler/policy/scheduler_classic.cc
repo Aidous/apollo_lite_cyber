@@ -24,6 +24,7 @@
 #include "cyber/common/file.h"
 #include "cyber/scheduler/policy/classic_context.h"
 #include "cyber/scheduler/processor.h"
+#include "cyber/event/perf_event_cache.h"
 
 namespace apollo {
 namespace cyber {
@@ -65,6 +66,7 @@ SchedulerClassic::SchedulerClassic() {
   } else {
     // if do not set default_proc_num in scheduler conf
     // give a default value
+    AWARN << "can not find file: " << cfg_file << ", use default.";
     uint32_t proc_num = 2;
     auto& global_conf = GlobalData::Instance()->Config();
     if (global_conf.has_scheduler_conf() &&
@@ -111,6 +113,7 @@ void SchedulerClassic::CreateProcessor() {
 bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   // we use multi-key mutex to prevent race condition
   // when del && add cr with same crid
+  AWARN << "SchedulerClassic DispatchTask begin..................";
   MutexWrapper* wrapper = nullptr;
   if (!id_map_mutex_.Get(cr->id(), &wrapper)) {
     {
@@ -132,6 +135,7 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   }
 
   if (cr_confs_.find(cr->name()) != cr_confs_.end()) {
+    AWARN << "can not find cr->name(): " <<cr->name();
     ClassicTask task = cr_confs_[cr->name()];
     cr->set_priority(task.prio());
     cr->set_group_name(task.group_name());
@@ -148,12 +152,16 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
 
   // Enqueue task.
   {
+    AWARN << "Dispatch Task: " << cr->group_name();
     WriteLockGuard<AtomicRWLock> lk(
         ClassicContext::rq_locks_[cr->group_name()].at(cr->priority()));
     ClassicContext::cr_group_[cr->group_name()]
         .at(cr->priority())
         .emplace_back(cr);
   }
+//    apollo::cyber::event::PerfEventCache::Instance()->
+//        AddSchedEvent(apollo::cyber::event::SchedPerf::RT_CREATE,
+//                  cr->id(), cr->processor_id());
 
   ClassicContext::Notify(cr->group_name());
   return true;
