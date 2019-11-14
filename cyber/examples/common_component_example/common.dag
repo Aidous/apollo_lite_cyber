@@ -8,6 +8,9 @@
             readers {
                 channel: "/carstatus/channel1"
             }
+            readers {
+                channel: "/carstatus/channel2"
+            }
         }
       }
     }

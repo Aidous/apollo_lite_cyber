@@ -64,4 +64,7 @@ class TimerComponent : public ComponentBase {
 }  // namespace cyber
 }  // namespace apollo
 
+static std::string aa = "TimerComponent.h";
+CYBER_REGISTER_TEST(aa, 1)
+
 #endif  // CYBER_COMPONENT_TIMER_COMPONENT_H_

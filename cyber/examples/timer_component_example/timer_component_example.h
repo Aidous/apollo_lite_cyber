@@ -17,8 +17,8 @@
 
 #include "cyber/class_loader/class_loader.h"
 #include "cyber/component/component.h"
-#include "cyber/component/timer_component.h"
 #include "cyber/examples/proto/examples.pb.h"
+#include "cyber/component/timer_component.h"
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
@@ -35,4 +35,6 @@ class TimerComponentSample : public TimerComponent {
   std::shared_ptr<Writer<Driver>> driver_writer_ = nullptr;
   std::shared_ptr<Writer<Driver>> driver_writer1_ = nullptr;
 };
+static std::string tmp = "TimerComponentSample.h";
+CYBER_REGISTER_TEST(tmp, 0)
 CYBER_REGISTER_COMPONENT(TimerComponentSample)

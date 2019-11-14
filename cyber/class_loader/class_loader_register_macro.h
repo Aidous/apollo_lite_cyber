@@ -19,6 +19,17 @@
 
 #include "cyber/class_loader/utility/class_loader_utility.h"
 
+#define CYBER_REGISTER_TEST_INTERNAL(name, counter)                      \
+  namespace {                                                            \
+  struct Test##counter{                                                  \
+      Test##counter() {                                                  \
+         AWARN << name;                                                   \
+      }                                                                  \
+  };                                                                     \
+  static Test##counter Test##counter;                                    \
+  }                                                                      \
+
+
 #define CLASS_LOADER_REGISTER_CLASS_INTERNAL(Derived, Base, UniqueID)     \
   namespace {                                                             \
   struct ProxyType##UniqueID {                                            \
@@ -36,5 +47,9 @@
 // register class macro
 #define CLASS_LOADER_REGISTER_CLASS(Derived, Base) \
   CLASS_LOADER_REGISTER_CLASS_INTERNAL_1(Derived, Base, __COUNTER__)
+
+// register class macro
+#define CYBER_REGISTER_TEST(name, counter) \
+  CYBER_REGISTER_TEST_INTERNAL(name, counter)
 
 #endif  // CYBER_CLASS_LOADER_CLASS_LOADER_REGISTER_MACRO_H_

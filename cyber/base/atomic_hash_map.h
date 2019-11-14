@@ -91,8 +91,7 @@ class AtomicHashMap {
       value_ptr.store(new V(std::forward<V>(value)), std::memory_order_release);
     }
     ~Entry() {
-        // @note: comment for double delete. by aidos. Why cause this?
-        /*delete value_ptr.load(std::memory_order_acquire);*/ }
+        delete value_ptr.load(std::memory_order_acquire); }
 
     K key = 0;
     std::atomic<V *> value_ptr = {nullptr};

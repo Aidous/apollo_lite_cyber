@@ -76,9 +76,8 @@ template <typename Derived, typename Base>
 void RegisterClass(const std::string& class_name,
                    const std::string& base_class_name) {
 
-  AINFO << "registerclass:" << class_name << "," << base_class_name;
-//  << "," << GetCurLoadingLibraryName();
-// @note: comment for can not get a name before the func was called.
+  AINFO << "registerclass: " << class_name << ", " << base_class_name
+  << ", " << GetCurLoadingLibraryName();
 
   utility::AbstractClassFactory<Base>* new_class_factrory_obj =
       new utility::ClassFactory<Derived, Base>(class_name, base_class_name);

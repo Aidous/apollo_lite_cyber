@@ -1,0 +1,54 @@
+# Bazel
+bazel-apollo_lite
+bazel-bin
+bazel-genfiles
+bazel-out
+bazel-testlogs
+/Debug/
+*.pyc
+*genrule.log
+WORKSPACE
+# temporary files
+*.swp
+*.swo
+.DS_Store
+# generated files
+generated_data_warehouse.conf
+modules/common/data/ssl_keys
+
+# Eclipse IDE files
+.project
+.cproject
+.settings
+.classpath
+
+# IntelliJ files
+.idea
+
+# Vscode files
+.vscode
+
+# atom.io files
+*.gch
+
+# Logs.
+*.stdout
+*.stderr
+nohup.out
+*.bak
+*.csv.result
+
+# Editor configs
+.ycm_extra_conf.py
+
+# third_party
+
+# Data
+/data
+
+# Doxygen
+docs/doxygen
+
+# python proto
+py_proto
+cyber/python/cyber/proto/

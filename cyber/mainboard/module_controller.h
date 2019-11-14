@@ -21,8 +21,8 @@
 #include <vector>
 
 #include "cyber/class_loader/class_loader_manager.h"
-#include "cyber/component/component.h"
 #include "cyber/mainboard/module_argument.h"
+#include "cyber/component/component.h"
 #include "cyber/proto/dag_conf.pb.h"
 
 namespace apollo {
@@ -61,4 +61,6 @@ inline bool ModuleController::Init() { return LoadAll(); }
 }  // namespace cyber
 }  // namespace apollo
 
+//static std::string aaaaa = "ModuleController.h";
+//CYBER_REGISTER_TEST(aaaaa, 3)
 #endif  // CYBER_MAINBOARD_MODULE_CONTROLLER_H_

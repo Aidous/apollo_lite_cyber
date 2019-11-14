@@ -6,7 +6,8 @@ add_library(cyber_timer timer.cc
 			timer_task.cc
 			timing_slot.cc
 			timing_wheel.cc)
-target_link_libraries(cyber_timer cyber::data)
+target_link_libraries(cyber_timer cyber::data
+                                  cyber::proto)
 add_library(cyber::timer ALIAS cyber_timer)
 
 

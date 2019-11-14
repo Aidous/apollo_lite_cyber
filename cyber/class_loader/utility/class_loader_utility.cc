@@ -97,7 +97,7 @@ ClassFactoryVector GetAllClassFactoryObjects() {
 
   ClassFactoryVector all_class_factory_objs;
   BaseToClassFactoryMapMap& factory_map_map = GetClassFactoryMapMap();
-    AWARN << "BaseToClassFactoryMapMap size: " << factory_map_map.size();
+  AWARN << "BaseToClassFactoryMapMap size: " << factory_map_map.size();
 
     for (auto& baseclass_map : factory_map_map) {
       ClassFactoryVector objs = GetAllClassFactoryObjects(baseclass_map.second);
@@ -113,9 +113,7 @@ ClassFactoryVector GetAllClassFactoryObjectsOfLibrary(
   ClassFactoryVector all_class_factory_objs = GetAllClassFactoryObjects();
   ClassFactoryVector library_class_factory_objs;
     for (auto& class_factory_obj : all_class_factory_objs) {
-//      AWARN << "Path: " << class_factory_obj->GetRelativeLibraryPath();
-      // @note: comment for register class doesn't has a lib path. by aidos.
-    /*if (class_factory_obj->GetRelativeLibraryPath() == library_path) */{
+    if (class_factory_obj->GetRelativeLibraryPath() == library_path) {
       library_class_factory_objs.emplace_back(class_factory_obj);
     }
   }
@@ -212,6 +210,7 @@ bool LoadLibrary(const std::string& library_path, ClassLoader* loader) {
   PocoLibraryPtr poco_library = nullptr;
   static std::recursive_mutex loader_mutex;
   {
+//      std::lock_guard<std::recursive_mutex> lck(GetClassFactoryMapMapMutex());
     std::lock_guard<std::recursive_mutex> lck(loader_mutex);
 
     try {

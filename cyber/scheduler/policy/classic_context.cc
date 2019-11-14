@@ -70,8 +70,7 @@ std::shared_ptr<CRoutine> ClassicContext::NextRoutine() {
 
       // @note: change multi_pri_rq_->at(i)
       // to --> cr_group_[current_grp].at(i). by aidos.
-    for (auto& cr : cr_group_[current_grp].at(i)
-        /*multi_pri_rq_->at(i)*/) {
+    for (auto& cr : multi_pri_rq_->at(i)) {
       if (!cr->Acquire()) {
         continue;
       }

@@ -123,14 +123,12 @@ class CRoutine {
 };
 
 inline void CRoutine::Yield(const RoutineState &state) {
-  AWARN << "Yield by state.";
   auto routine = GetCurrentRoutine();
   routine->set_state(state);
   SwapContext(GetCurrentRoutine()->GetStack(), GetMainStack());
 }
 
 inline void CRoutine::Yield() {
-  AWARN << "Yield";
   SwapContext(GetCurrentRoutine()->GetStack(), GetMainStack());
 }
 

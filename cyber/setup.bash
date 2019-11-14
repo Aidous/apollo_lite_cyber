@@ -5,7 +5,7 @@ apollo_tool_path="${CYBER_PATH}/../apollo/bin"
 recorder_path="${CYBER_PATH}/../apollo/bin"
 monitor_path="${CYBER_PATH}/../apollo/bin"
 visualizer_path="${CYBER_PATH}/../apollo/bin"
-PYTHON_LD_PATH="${CYBER_PATH}/../apollo/lib"  # problem exist
+PYTHON_LD_PATH="${CYBER_PATH}/../apollo/lib"
 launch_path="${CYBER_PATH}/tools/cyber_launch"
 channel_path="${CYBER_PATH}/tools/cyber_channel"
 node_path="${CYBER_PATH}/tools/cyber_node"
@@ -22,7 +22,7 @@ export CYBER_DOMAIN_ID=80
 export CYBER_IP=127.0.0.1
 export CYBER_RUN_MODE=reality  # reality or simulation
 
-export GLOG_log_dir=${CYBER_PATH}/../log  # add for glog dir. # /apollo/data/log
+export GLOG_log_dir=${CYBER_PATH}/../data/log  # add for glog dir. # /apollo/data/log
 export GLOG_alsologtostderr=1   # if print all meesage to terminal else 0.
 export GLOG_colorlogtostderr=1
 export GLOG_minloglevel=0

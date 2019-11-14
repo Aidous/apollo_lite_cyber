@@ -44,6 +44,7 @@ bool ModuleController::LoadAll() {
   std::vector<std::string> paths;
   for (auto& dag_conf : args_.GetDAGConfList()) {
     std::string module_path = "";
+    AWARN << "start module: " << dag_conf << "..........................";
     if (dag_conf == common::GetFileName(dag_conf)) {
       // case dag conf argument var is a filename
       module_path = common::GetAbsolutePath(dag_root_path, dag_conf);
@@ -66,7 +67,6 @@ bool ModuleController::LoadAll() {
   common::GlobalData::Instance()->SetComponentNums(total_component_nums);
   for (auto module_path : paths) {
     AINFO << "Start initialize dag: " << module_path;
-    SetCurLoadingLibraryName(module_path);  // @note aidos add for lib path.
     if (!LoadModule(module_path)) {
       AERROR << "Failed to load module: " << module_path;
       return false;
@@ -92,7 +92,8 @@ bool ModuleController::LoadModule(const DagConfig& dag_config) {
       return false;
     }
 
-    class_loader_manager_.LoadLibrary(load_path);
+//      SetCurLoadingLibraryName(load_path);  // @note aidos add for lib path.
+      class_loader_manager_.LoadLibrary(load_path);
 
     for (auto& component : module_config.components()) {
       const std::string& class_name = component.class_name();

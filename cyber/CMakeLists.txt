@@ -61,6 +61,7 @@ target_link_libraries(cyber_core cyber::binary
 					  cyber::base
 					  cyber::blocker
 					  cyber::class_loader
+					  cyber::class_loader_manager
 					  cyber::common
 					  cyber::component
 					  cyber::croutine
@@ -95,9 +96,9 @@ add_library(cyber::cyber ALIAS cyber)
 add_executable(mainboard mainboard/mainboard.cc
 			   mainboard/module_argument.cc
 			   mainboard/module_controller.cc)
-target_link_libraries(mainboard pthread cyber::proto
-					  cyber::time_component_example
-					  cyber::cyber_core)
+target_link_libraries(mainboard pthread
+					  cyber::cyber_core
+					  cyber::proto)
 
 install(TARGETS cyber_binary
 		cyber_state

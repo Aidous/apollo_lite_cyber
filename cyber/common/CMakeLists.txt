@@ -10,7 +10,7 @@ add_library(cyber_common environment.h
 			util.h)
 set_target_properties(cyber_common PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(cyber_common cyber::proto
-					  ${GLOG_LIBRARIES})
+				   ${GLOG_LIBRARIES})
 add_library(cyber::common ALIAS cyber_common)
 
 ## gtest

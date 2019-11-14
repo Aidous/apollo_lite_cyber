@@ -26,10 +26,10 @@
 #include "cyber/common/global_data.h"
 #include "cyber/common/types.h"
 #include "cyber/common/util.h"
-#include "cyber/component/component_base.h"
 #include "cyber/croutine/routine_factory.h"
 #include "cyber/data/data_visitor.h"
 #include "cyber/scheduler/scheduler.h"
+#include "cyber/component/component_base.h"
 
 namespace apollo {
 namespace cyber {

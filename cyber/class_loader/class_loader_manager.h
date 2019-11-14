@@ -106,4 +106,7 @@ std::vector<std::string> ClassLoaderManager::GetValidClassNames() {
 }  // namespace cyber
 }  // namespace apollo
 
+//static std::string aaaaaa = "ClassLoaderManager.h";
+//CYBER_REGISTER_TEST(aaaaaa, 4)
+
 #endif  // CYBER_CLASS_LOADER_CLASS_LOADER_MANAGER_H_

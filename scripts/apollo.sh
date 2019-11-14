@@ -658,18 +658,18 @@ function print_usage() {
   "
 }
 
-function setup() {
-  if [ "$MACHINE_ARCH" == 'x86_64' ]; then
-    SETUP_SCRIPT= docker/build/cyber.x86_64.sh
-  elif [ "$MACHINE_ARCH" == 'aarch64' ]; then
-    SETUP_SCRIPT= docker/build/cyber.aarch64.sh
-  else 
-    echo "Unsupported platform"
-    exit 1
-  fi
-
-  ${SETUP_SCRIPT}
-}
+#function setup() {
+ # if [ "$MACHINE_ARCH" == 'x86_64' ]; then
+  #  SETUP_SCRIPT= docker/build/cyber.x86_64.sh
+  #elif [ "$MACHINE_ARCH" == 'aarch64' ]; then
+  #  SETUP_SCRIPT= docker/build/cyber.aarch64.sh
+  #else 
+  #  echo "Unsupported platform"
+  #  exit 1
+  #fi
+#
+ # ${SETUP_SCRIPT}
+#}
 
 function main() {
   source_apollo_base
@@ -785,7 +785,7 @@ function main() {
       print_usage
       ;;
     setup)
-      setup
+      # setup
       ;;
     *)
       print_usage

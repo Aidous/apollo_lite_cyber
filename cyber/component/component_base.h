@@ -26,9 +26,10 @@
 #include "cyber/common/environment.h"
 #include "cyber/common/file.h"
 #include "cyber/node/node.h"
-#include "cyber/proto/component_conf.pb.h"
 #include "cyber/scheduler/scheduler.h"
 #include "gflags/gflags.h"
+
+#include "cyber/proto/component_conf.pb.h"
 
 namespace apollo {
 namespace cyber {
@@ -115,5 +116,8 @@ class ComponentBase : public std::enable_shared_from_this<ComponentBase> {
 
 }  // namespace cyber
 }  // namespace apollo
+
+//static std::string aaa = "ComponentBase.h";
+//CYBER_REGISTER_TEST(aaa, 2)
 
 #endif  // CYBER_COMPONENT_COMPONENT_BASE_H_
