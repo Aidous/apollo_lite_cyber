@@ -14,8 +14,7 @@ add_library(cyber_recorder main.cc
 set_target_properties(cyber_recorder PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(cyber_recorder cyber::py_wrapper
         cyber::cyber
-        pthread
-        )
+        pthread)
 add_library(cyber::recorder ALIAS cyber_recorder)
 
 add_executable(cyber_app main.cc)

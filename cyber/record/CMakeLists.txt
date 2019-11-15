@@ -17,26 +17,29 @@ target_link_libraries(cyber_record cyber::proto
 					  cyber::cyber)
 add_library(cyber::record ALIAS cyber_record)
 
-#add_executable(record_file_test file/record_file_test.cc)
-#target_link_libraries(record_file_test cyber::cyber
-#        cyber::proto
-#        gtest
-#        gtest_main)
-#
-#add_executable(record_reader_test record_reader_test.cc)
-#target_link_libraries(record_reader_test cyber::cyber
-#        cyber::proto
-#        gtest
-#        gtest_main)
-#
-#add_executable(record_viewer_test record_viewer_test.cc)
-#target_link_libraries(record_viewer_test cyber::cyber
-#        cyber::proto
-#        gtest
-#        gtest_main)
+add_executable(record_file_test file/record_file_test.cc)
+target_link_libraries(record_file_test cyber::cyber
+        cyber::proto
+        gtest
+        gtest_main)
+
+add_executable(record_reader_test record_reader_test.cc)
+target_link_libraries(record_reader_test cyber::cyber
+        cyber::proto
+        gtest
+        gtest_main)
+
+add_executable(record_viewer_test record_viewer_test.cc)
+target_link_libraries(record_viewer_test cyber::cyber
+        cyber::proto
+        gtest
+        gtest_main)
 
 
 install(TARGETS cyber_record
+		record_file_test
+		record_reader_test
+		record_viewer_test
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin

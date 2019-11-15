@@ -66,10 +66,9 @@ std::shared_ptr<CRoutine> ClassicContext::NextRoutine() {
 
 //      if (cr_group_[current_grp].at(i).size() > 0) {
 //          AWARN << "find task. " << multi_pri_rq_->at(i).size();
+//          AWARN << "find taskk. " << cr_group_[current_grp].at(i).size();
 //      }
 
-      // @note: change multi_pri_rq_->at(i)
-      // to --> cr_group_[current_grp].at(i). by aidos.
     for (auto& cr : multi_pri_rq_->at(i)) {
       if (!cr->Acquire()) {
         continue;
@@ -78,6 +77,7 @@ std::shared_ptr<CRoutine> ClassicContext::NextRoutine() {
       if (cr->UpdateState() == RoutineState::READY) {
         PerfEventCache::Instance()->AddSchedEvent(SchedPerf::NEXT_RT, cr->id(),
                                                   cr->processor_id());
+        AWARN << "Dispatched Task: " << cr->name();
         return cr;
       }
 

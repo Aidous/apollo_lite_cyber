@@ -17,20 +17,23 @@ target_link_libraries(cyber_scheduler cyber::croutine
 add_library(cyber::scheduler ALIAS cyber_scheduler)
 
 ## gtest
-#add_executable(scheduler_test scheduler_test.cc)
-#target_link_libraries(scheduler_test gtest gtest_main gmock cyber::cyber
-#                                                            cyber::scheduler_factory)
+add_executable(scheduler_test scheduler_test.cc)
+target_link_libraries(scheduler_test cyber::cyber
+					  gtest gtest_main gmock)
+
+add_executable(scheduler_classic_test scheduler_classic_test.cc)
+target_link_libraries(scheduler_classic_test cyber::cyber
+					  gtest gtest_main gmock)
 #
-#add_executable(scheduler_classic_test scheduler_classic_test.cc)
-#target_link_libraries(scheduler_classic_test gtest gtest_main gmock cyber::cyber
-#                                                                    cyber::scheduler_factory)
-#
-#add_executable(scheduler_choreo_test scheduler_choreo_test.cc)
-#target_link_libraries(scheduler_choreo_test gtest gtest_main gmock cyber::cyber
-#                                                                   cyber::scheduler_factory)
+add_executable(scheduler_choreo_test scheduler_choreo_test.cc)
+target_link_libraries(scheduler_choreo_test cyber::cyber
+					  gtest gtest_main gmock)
 
 
 install(TARGETS cyber_scheduler
+		scheduler_test
+		scheduler_classic_test
+		scheduler_choreo_test
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
 		RUNTIME DESTINATION bin

@@ -61,7 +61,9 @@ TEST(SchedulerClassicTest, classic) {
 
 TEST(SchedulerClassicTest, sched_classic) {
   // read example_sched_classic.conf
-  GlobalData::Instance()->SetProcessGroup("example_sched_classic");
+//  AWARN << "ProcessGroup: " << GlobalData::Instance()->ProcessGroup();
+  GlobalData::Instance()->
+        SetProcessGroup("example_sched_classic");
   auto sched1 = dynamic_cast<SchedulerClassic*>(scheduler::Instance());
   std::shared_ptr<CRoutine> cr = std::make_shared<CRoutine>(func);
   auto task_id = GlobalData::RegisterTaskName("ABC");
@@ -108,6 +110,9 @@ TEST(SchedulerClassicTest, sched_classic) {
 
 int main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);
+  /// @note add path before schduler instance. by aidos.
+  apollo::cyber:: GlobalData::Instance()->
+      SetProcessGroup("example_sched_classic");
   apollo::cyber::Init(argv[0]);
   auto res = RUN_ALL_TESTS();
   apollo::cyber::Clear();

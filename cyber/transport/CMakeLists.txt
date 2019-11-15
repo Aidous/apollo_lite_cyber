@@ -45,50 +45,77 @@ target_link_libraries(cyber_transport
 add_library(cyber::transport ALIAS cyber_transport)
 
 ### gtest
-#add_executable(transport_test transport_test.cc)
-#target_link_libraries(transport_test gtest gtest_main gmock cyber::cyber_core
-#                                                            cyber::proto)
-#
-#add_executable(common_test common/common_test.cc)
-#target_link_libraries(common_test gtest gtest_main gmock cyber::cyber_core)
-#
-#add_executable(dispatcher_test dispatcher/dispatcher_test.cc)
-#target_link_libraries(dispatcher_test gtest gtest_main gmock cyber::cyber_core
-#                                                             cyber::proto)
-#add_executable(intra_dispatcher_test dispatcher/intra_dispatcher_test.cc)
-#target_link_libraries(intra_dispatcher_test gtest gtest_main gmock cyber::cyber_core
-#                                                                   cyber::proto)
-#
-#add_executable(rtps_dispatcher_test dispatcher/rtps_dispatcher_test.cc)
-#target_link_libraries(rtps_dispatcher_test gtest gtest_main gmock cyber::cyber_core
-#                                                                  cyber::proto)
-#
-#add_executable(shm_dispatcher_test dispatcher/shm_dispatcher_test.cc)
-#target_link_libraries(shm_dispatcher_test gtest gtest_main gmock cyber::cyber_core
-#                                                                 cyber::proto)
-#
-#add_executable(message_test message/message_test.cc)
-#target_link_libraries(message_test gtest gtest_main gmock cyber::cyber_core)
-#
-#add_executable(rtps_test rtps/rtps_test.cc)
-#target_link_libraries(rtps_test gtest gtest_main gmock cyber::cyber_core)
-#
-#add_executable(hybrid_transceiver_test transceiver/hybrid_transceiver_test.cc)
-#target_link_libraries(hybrid_transceiver_test gtest gtest_main gmock cyber::cyber_core
-#                                                                     cyber::proto)
-#
-#add_executable(intra_transceiver_test transceiver/intra_transceiver_test.cc)
-#target_link_libraries(intra_transceiver_test gtest gtest_main gmock cyber::cyber_core
-#                                                                    cyber::proto)
-#
-#add_executable(rtps_transceiver_test transceiver/rtps_transceiver_test.cc)
-#target_link_libraries(rtps_transceiver_test gtest gtest_main gmock cyber::cyber_core
-#                                                                   cyber::proto)
-#
-#add_executable(shm_transceiver_test transceiver/shm_transceiver_test.cc)
-#target_link_libraries(shm_transceiver_test gtest gtest_main gmock cyber::cyber_core
-#                                                                  cyber::proto)
+add_executable(transport_test transport_test.cc)
+target_link_libraries(transport_test gtest gtest_main
+					  gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(common_test common/common_test.cc)
+target_link_libraries(common_test gtest gtest_main
+					  gmock
+					  cyber::cyber_core)
+
+add_executable(dispatcher_test dispatcher/dispatcher_test.cc)
+target_link_libraries(dispatcher_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(intra_dispatcher_test dispatcher/intra_dispatcher_test.cc)
+target_link_libraries(intra_dispatcher_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(rtps_dispatcher_test dispatcher/rtps_dispatcher_test.cc)
+target_link_libraries(rtps_dispatcher_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(shm_dispatcher_test dispatcher/shm_dispatcher_test.cc)
+target_link_libraries(shm_dispatcher_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(message_test message/message_test.cc)
+target_link_libraries(message_test gtest gtest_main gmock
+					  cyber::cyber_core)
+
+add_executable(rtps_test rtps/rtps_test.cc)
+target_link_libraries(rtps_test gtest gtest_main gmock
+					  cyber::cyber_core)
+
+add_executable(hybrid_transceiver_test transceiver/hybrid_transceiver_test.cc)
+target_link_libraries(hybrid_transceiver_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(intra_transceiver_test transceiver/intra_transceiver_test.cc)
+target_link_libraries(intra_transceiver_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(rtps_transceiver_test transceiver/rtps_transceiver_test.cc)
+target_link_libraries(rtps_transceiver_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
+
+add_executable(shm_transceiver_test transceiver/shm_transceiver_test.cc)
+target_link_libraries(shm_transceiver_test gtest gtest_main gmock
+					  cyber::cyber_core
+					  cyber::proto)
 install(TARGETS cyber_transport
+		transport_test
+		common_test
+		dispatcher_test
+		intra_dispatcher_test
+		rtps_dispatcher_test
+		shm_dispatcher_test
+		message_test
+		rtps_test
+		hybrid_transceiver_test
+		intra_transceiver_test
+		rtps_transceiver_test
+		shm_transceiver_test
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
 		RUNTIME DESTINATION bin

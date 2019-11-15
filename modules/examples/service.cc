@@ -27,6 +27,9 @@ int main(int argc, char* argv[]) {
       "test_server", [](const std::shared_ptr<Driver>& request,
                         std::shared_ptr<Driver>& response) {
         AINFO << "server: i am driver server";
+        AINFO << "Server: i have received request: "
+                 << request->msg_id();
+
         static uint64_t id = 0;
         ++id;
         response->set_msg_id(id);
@@ -36,7 +39,9 @@ int main(int argc, char* argv[]) {
   auto driver_msg = std::make_shared<Driver>();
   driver_msg->set_msg_id(0);
   driver_msg->set_timestamp(0);
+  int counter_id = 1024;
   while (apollo::cyber::OK()) {
+    driver_msg->set_msg_id(counter_id--);
     auto res = client->SendRequest(driver_msg);
     if (res != nullptr) {
       AINFO << "client: responese: " << res->ShortDebugString();

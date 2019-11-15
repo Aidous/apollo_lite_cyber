@@ -27,6 +27,8 @@ void MessageCallback(const std::shared_ptr<RawMessage>& msg) {
   std::string ts(msg->message, 307200);
   total_latency += now - std::stoul(ts);
   ++count;
+
+//  AINFO << "receive msg: " << msg->message;
 }
 
 int main(int argc, char* argv[]) {

@@ -8,15 +8,19 @@ target_link_libraries(cyber_component ${gflags_LIBRARIES}
 add_library(cyber::component ALIAS cyber_component)
 
 ## gtest
-#add_executable(timer_component_test timer_component_test.cc)
-#target_link_libraries(timer_component_test gtest gtest_main gmock cyber::cyber)
-#
-#add_executable(component component_test.cc)
-#target_link_libraries(component cyber::cyber
-#        gtest
-#        gtest_main)
+add_executable(timer_component_test timer_component_test.cc)
+target_link_libraries(timer_component_test gtest gtest_main
+					  gmock
+					  cyber::cyber)
+
+add_executable(component_test component_test.cc)
+target_link_libraries(component_test cyber::cyber
+        gtest
+        gtest_main)
 
 install(TARGETS cyber_component
+		timer_component_test
+		component_test
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
 		RUNTIME DESTINATION bin

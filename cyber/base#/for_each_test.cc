@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2019 The Apollo Authors. All Rights Reserved.
+ * Copyright 2018 The Apollo Authors. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
+#include "cyber/base/for_each.h"
+
+#include <gtest/gtest.h>
+#include <iostream>
 #include <memory>
+#include <vector>
 
-#include "cyber/class_loader/class_loader.h"
-#include "cyber/component/component.h"
-#include "modules/examples/proto/examples.pb.h"
+namespace apollo {
+namespace cyber {
+namespace base {
 
-using apollo::cyber::Component;
-using apollo::cyber::ComponentBase;
-using apollo::examples::proto::Driver;
+TEST(ForEachTest, base) {
+  std::vector<int> vec;
+  FOR_EACH(i, 0, 100) { vec.push_back(i); }
+  EXPECT_EQ(100, vec.size());
 
-class ExampleComponent : public Component<Driver, Driver> {
- public:
-  bool Init() override;
-  bool Proc(const std::shared_ptr<Driver>& msg0,
-            const std::shared_ptr<Driver>& msg1) override;
-};
+  int index = 0;
+  FOR_EACH(it, vec.begin(), vec.end()) { EXPECT_EQ(index++, *it); }
 
-CYBER_REGISTER_COMPONENT(ExampleComponent)
+  FOR_EACH(i, 0, 'a') { EXPECT_GT('a', i); }
+}
+
+}  // namespace base
+}  // namespace cyber
+}  // namespace apollo

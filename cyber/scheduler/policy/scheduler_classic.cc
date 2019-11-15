@@ -44,6 +44,7 @@ SchedulerClassic::SchedulerClassic() {
   conf.append(GlobalData::Instance()->ProcessGroup()).append(".conf");
   auto cfg_file = GetAbsolutePath(WorkRoot(), conf);
 
+  AWARN << "SchedulerClassic config directory: " <<cfg_file;
   apollo::cyber::proto::CyberConfig cfg;
   if (PathExists(cfg_file) && GetProtoFromFile(cfg_file, &cfg)) {
     for (auto& thr : cfg.scheduler_conf().threads()) {
@@ -59,6 +60,7 @@ SchedulerClassic::SchedulerClassic() {
     for (auto& group : classic_conf_.groups()) {
       auto& group_name = group.name();
       for (auto task : group.tasks()) {
+        AWARN << "group: " << group.name() << " task: " << task.name();
         task.set_group_name(group_name);
         cr_confs_[task.name()] = task;
       }
@@ -66,11 +68,11 @@ SchedulerClassic::SchedulerClassic() {
   } else {
     // if do not set default_proc_num in scheduler conf
     // give a default value
-    AWARN << "can not find file: " << cfg_file << ", use default.";
+    AWARN << "can not find sched file: " << cfg_file << ", use default.";
     uint32_t proc_num = 2;
     auto& global_conf = GlobalData::Instance()->Config();
     if (global_conf.has_scheduler_conf() &&
-        global_conf.scheduler_conf().has_default_proc_num()) {
+        global_conf.scheduler_conf().has_default_proc_num()) {  // cyber.pb.conf
       proc_num = global_conf.scheduler_conf().default_proc_num();
     }
     task_pool_size_ = proc_num;
@@ -113,7 +115,7 @@ void SchedulerClassic::CreateProcessor() {
 bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   // we use multi-key mutex to prevent race condition
   // when del && add cr with same crid
-  AWARN << "SchedulerClassic DispatchTask begin..................";
+  AWARN << "SchedulerClassic DispatchTask begin: "<< cr->name() << "........";
   MutexWrapper* wrapper = nullptr;
   if (!id_map_mutex_.Get(cr->id(), &wrapper)) {
     {
@@ -129,18 +131,22 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   {
     WriteLockGuard<AtomicRWLock> lk(id_cr_lock_);
     if (id_cr_.find(cr->id()) != id_cr_.end()) {
+      AWARN << "Task: " << cr->name() << " is already exist.";
       return false;
     }
     id_cr_[cr->id()] = cr;
   }
 
   if (cr_confs_.find(cr->name()) != cr_confs_.end()) {
-    AWARN << "can not find cr->name(): " <<cr->name();
+    AWARN << "find cr->name() in conf: " << cr->name();
     ClassicTask task = cr_confs_[cr->name()];
     cr->set_priority(task.prio());
     cr->set_group_name(task.group_name());
   } else {
     // croutine that not exist in conf
+    AWARN << "croutine that not exist in conf: " << cr->name()
+          << ", use conf first group: "
+          << classic_conf_.groups(0).name();
     cr->set_group_name(classic_conf_.groups(0).name());
   }
 
@@ -152,16 +158,16 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
 
   // Enqueue task.
   {
-    AWARN << "Dispatch Task: " << cr->group_name();
+    AWARN << "Dispatch Group: " << cr->group_name();
     WriteLockGuard<AtomicRWLock> lk(
         ClassicContext::rq_locks_[cr->group_name()].at(cr->priority()));
     ClassicContext::cr_group_[cr->group_name()]
         .at(cr->priority())
         .emplace_back(cr);
   }
-//    apollo::cyber::event::PerfEventCache::Instance()->
-//        AddSchedEvent(apollo::cyber::event::SchedPerf::RT_CREATE,
-//                  cr->id(), cr->processor_id());
+    apollo::cyber::event::PerfEventCache::Instance()->
+        AddSchedEvent(apollo::cyber::event::SchedPerf::RT_CREATE,
+                  cr->id(), cr->processor_id());
 
   ClassicContext::Notify(cr->group_name());
   return true;

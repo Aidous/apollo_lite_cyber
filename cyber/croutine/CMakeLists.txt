@@ -24,11 +24,14 @@ target_link_libraries(cyber_croutine cyber::swap
 add_library(cyber::croutine ALIAS cyber_croutine)
 
 ## gtest
-#add_executable(croutine_test croutine_test.cc)
-#target_link_libraries(croutine_test gtest gtest_main gmock cyber::cyber)
+add_executable(croutine_test croutine_test.cc)
+target_link_libraries(croutine_test gtest gtest_main
+					  gmock
+					  cyber::cyber)
 
 
 install(TARGETS cyber_croutine
+		croutine_test
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin

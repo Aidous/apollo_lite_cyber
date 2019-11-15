@@ -81,6 +81,7 @@ target_link_libraries(cyber_core cyber::binary
 					  cyber::time
 					  cyber::timer
 					  cyber::transport
+					  cyber::state
 					  3rdparty::tf2
 					  ${GLOG_LIBRARIES}
 					  ${gflags_LIBRARIES}

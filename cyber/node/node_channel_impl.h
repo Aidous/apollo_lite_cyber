@@ -184,8 +184,6 @@ auto NodeChannelImpl::CreateReader(const std::string& channel_name,
   proto::RoleAttributes role_attr;
   role_attr.set_channel_name(channel_name);
 
-  AWARN << "channnel_name_reader_func: "<< &reader_func;
-
   return this->template CreateReader<MessageT>(role_attr, reader_func);
 }
 
@@ -196,8 +194,6 @@ auto NodeChannelImpl::CreateReader(const ReaderConfig& config,
   proto::RoleAttributes role_attr;
   role_attr.set_channel_name(config.channel_name);
   role_attr.mutable_qos_profile()->CopyFrom(config.qos_profile);
-
-  AWARN << "ReaderConfig_reader_func: "<< &reader_func;
 
   return this->template CreateReader<MessageT>(role_attr, reader_func,
                                                config.pending_queue_size);

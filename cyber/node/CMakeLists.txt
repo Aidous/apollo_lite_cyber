@@ -14,8 +14,20 @@ target_link_libraries(cyber_node cyber::proto
 					  cyber::service_discovery)
 add_library(cyber::node ALIAS cyber_node)
 
+add_executable(writer_reader_test writer_reader_test.cc)
+target_link_libraries(writer_reader_test gtest gtest_main
+					  cyber::cyber
+					  cyber::proto)
+
+add_executable(node_test node_test.cc)
+target_link_libraries(node_test gtest gtest_main
+					  gmock
+					  cyber::cyber
+					  cyber::proto)
 
 install(TARGETS cyber_node
+		writer_reader_test
+		node_test
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
