@@ -59,7 +59,6 @@ GlobalData::GlobalData() {
   process_id_ = getpid();
   char* prog_path = program_path();
   if (prog_path) {
-    /// @note command process_id_ by aidos.
     process_group_ = GetFileName(prog_path) + "_" + std::to_string(process_id_);
     free(prog_path);
   } else {

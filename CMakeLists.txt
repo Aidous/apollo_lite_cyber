@@ -8,7 +8,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 11)
 
-# set(CMAKE_BUILD_TYPE "Release")
+#set(CMAKE_BUILD_TYPE "Release")
 
 set(CMAKE_CXX_FLAGS "-w -fPIC -std=c++11 ${CMAKE_CXX_FLAGS}")
 

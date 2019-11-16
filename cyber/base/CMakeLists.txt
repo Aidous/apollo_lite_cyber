@@ -39,9 +39,9 @@ target_link_libraries(for_each_test gtest gtest_main
 					  cyber::base)
 
 add_executable(object_pool_test object_pool_test.cc)
-target_link_libraries(object_pool_test atomic
-					  cyber::base
-					  gtest gtest_main)
+target_link_libraries(object_pool_test gtest
+					  gtest_main
+					  atomic cyber::base)
 
 
 install(TARGETS cyber_base
