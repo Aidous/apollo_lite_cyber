@@ -13,7 +13,7 @@ function run_all_test() {
     for file in `ls *test`
     do 
         echo -e "\033[43;35m >>>>>>>> testing file: $file \033[0m" 
-        $file
+        sudo ./$file
         file_count=$file_count+1
     done
     echo "Test $file_count files Over"
