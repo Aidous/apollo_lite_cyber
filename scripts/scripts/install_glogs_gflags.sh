@@ -3,7 +3,7 @@ set -e
 install_gflags()
 {
     cd /tmp
-    #wget https://github.com/gflags/gflags/archive/v2.2.0.tar.gz
+    wget https://github.com/gflags/gflags/archive/v2.2.0.tar.gz
     tar xzf v2.2.0.tar.gz
     mkdir -p gflags-2.2.0/build
     cd gflags-2.2.0/build
@@ -15,7 +15,7 @@ install_gflags()
 install_glog()
 {
     cd /tmp
-    #wget https://github.com/google/glog/archive/v0.3.5.tar.gz
+    wget https://github.com/google/glog/archive/v0.3.5.tar.gz
     tar xzf v0.3.5.tar.gz
     cd glog-0.3.5
     export LDFLAGS='-L/usr/local/lib'
@@ -25,5 +25,5 @@ install_glog()
 }
 
 
-#install_gflags
+install_gflags
 install_glog
