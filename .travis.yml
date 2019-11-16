@@ -17,16 +17,15 @@ install:
   - sudo apt-get install -qq g++-5
 
 before_script:
-  - bash scripts/install_dependencies.sh
+  - bash scripts/scripts/install_dependencies.sh
 
 script:
   - pwd
-  - cd src/apollo
   - mkdir -p build
   - cd build && cmake ..
   - make -j$(nproc)
   - sudo make install
-  - cd ../../../
+  - cd ../
   - bash run_all_test.bash
 
 notifications:
