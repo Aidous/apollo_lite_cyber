@@ -1,0 +1,33 @@
+language: cpp
+
+git:
+  submodules: true
+  quiet: false
+  depth: false
+
+compiler: gcc
+dist: xenial
+cache: ccache
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq g++-5
+
+before_script:
+  - bash scripts/install_dependencies.sh
+
+script:
+  - pwd
+  - cd src/apollo
+  - mkdir -p build
+  - cd build && cmake ..
+  - make -j$(nproc)
+  - sudo make install
+  - cd ../../../
+  - bash run_all_test.bash
+
+notifications:
+  email: false
