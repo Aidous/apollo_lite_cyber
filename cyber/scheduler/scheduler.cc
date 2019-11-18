@@ -53,14 +53,14 @@ bool Scheduler::CreateTask(std::function<void()>&& func,
   cr->set_id(task_id);
   cr->set_name(name);
 
-  AINFO << "create croutine: " << name;
+  ADEBUG << "create croutine: " << name;
 
   if (!DispatchTask(cr)) {
     AWARN << "DispatchTask faild !";
     return false;
   }
 
-  AINFO << "DispatchTask end. " << name;
+  ADEBUG << "DispatchTask end. " << name;
 
   if (visitor != nullptr) {
     visitor->RegisterNotifyCallback([this, task_id, name]() {

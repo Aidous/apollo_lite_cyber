@@ -43,7 +43,7 @@ ClassicContext::ClassicContext(const std::string& group_name) {
 }
 
 void ClassicContext::InitGroup(const std::string& group_name) {
-  AWARN << "init group: " << group_name;
+  ADEBUG << "init group: " << group_name;
   multi_pri_rq_ = &cr_group_[group_name];
   lq_ = &rq_locks_[group_name];
   mtx_wrapper_ = &mtx_wq_[group_name];
@@ -77,7 +77,7 @@ std::shared_ptr<CRoutine> ClassicContext::NextRoutine() {
       if (cr->UpdateState() == RoutineState::READY) {
         PerfEventCache::Instance()->AddSchedEvent(SchedPerf::NEXT_RT, cr->id(),
                                                   cr->processor_id());
-        AWARN << "Dispatched Task: " << cr->name();
+        ADEBUG << "Dispatched Task: " << cr->name();
         return cr;
       }
 

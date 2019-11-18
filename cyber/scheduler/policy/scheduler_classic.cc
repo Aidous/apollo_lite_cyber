@@ -115,7 +115,7 @@ void SchedulerClassic::CreateProcessor() {
 bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   // we use multi-key mutex to prevent race condition
   // when del && add cr with same crid
-  AWARN << "SchedulerClassic DispatchTask begin: "<< cr->name() << "........";
+  ADEBUG << "SchedulerClassic DispatchTask begin: "<< cr->name() << "........";
   MutexWrapper* wrapper = nullptr;
   if (!id_map_mutex_.Get(cr->id(), &wrapper)) {
     {
@@ -138,13 +138,13 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
   }
 
   if (cr_confs_.find(cr->name()) != cr_confs_.end()) {
-    AWARN << "find cr->name() in conf: " << cr->name();
+    ADEBUG << "find cr->name() in conf: " << cr->name();
     ClassicTask task = cr_confs_[cr->name()];
     cr->set_priority(task.prio());
     cr->set_group_name(task.group_name());
   } else {
     // croutine that not exist in conf
-    AWARN << "croutine that not exist in conf: " << cr->name()
+    ADEBUG << "croutine that not exist in conf: " << cr->name()
           << ", use conf first group: "
           << classic_conf_.groups(0).name();
     cr->set_group_name(classic_conf_.groups(0).name());
@@ -158,7 +158,7 @@ bool SchedulerClassic::DispatchTask(const std::shared_ptr<CRoutine>& cr) {
 
   // Enqueue task.
   {
-    AWARN << "Dispatch Group: " << cr->group_name();
+    ADEBUG << "Dispatch Group: " << cr->group_name();
     WriteLockGuard<AtomicRWLock> lk(
         ClassicContext::rq_locks_[cr->group_name()].at(cr->priority()));
     ClassicContext::cr_group_[cr->group_name()]
