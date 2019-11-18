@@ -69,12 +69,13 @@ cd ..
 
 - cyber_monitor_app
 
+![monitor](https://github.com/Aidous/apollo_lite_cyber/blob/master/monitor.png)
 
 ## some simple examples:
 
 1. **firstly set environments:**
 ```
-   - source cyber/setup.bash
+   source cyber/setup.bash
 ```   
    
 2. component usage example:
