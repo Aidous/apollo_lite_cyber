@@ -73,12 +73,12 @@ cd ..
 
 ## some simple examples:
 
-1. **firstly set environments:**
+   **firstly set environments:**
 ```
    source cyber/setup.bash
 ```   
    
-2. component usage example:
+1. component usage example:
 
 - subscriber:
 ```
@@ -96,7 +96,7 @@ cd ..
    cyber_launch stop cyber/examples/common_component_example/common.launch
 ```
 
-3. sub/pub usage example:
+2. node usage example:
 
 - subscriber:
 ``` 
@@ -108,12 +108,12 @@ cd ..
      example_talker / cyber_example_talker 
 ```
 
-4. service usage example:
+3. service usage example:
 ```
    cyber_example_service
 ```
 
-5. paramserver usage example:
+4. paramserver usage example:
 ```
    cyber_example_paramserver
 ```
