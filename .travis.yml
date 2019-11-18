@@ -24,9 +24,9 @@ script:
   - mkdir -p build
   - cd build && cmake ..
   - make -j$(nproc)
-  - sudo make install
-  - cd ../
-  - bash run_all_test.bash
+  - make install
+  - cd ..
+  - ./run_all_test.bash
 
 notifications:
   email: false
