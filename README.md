@@ -1,4 +1,4 @@
-# A Cmake Version Framework Based On APOLLO Cyber RT [![Build Status](https://travis-ci.com/Aidous/apollo_lite_cyber.svg?token=8DqbrMkiJq8qxyzaYtzQ&branch=master)](https://travis-ci.com/Aidous/apollo_lite_cyber)
+# Apollo lite cyber RT [![Build Status](https://travis-ci.com/Aidous/apollo_lite_cyber.svg?token=8DqbrMkiJq8qxyzaYtzQ&branch=master)](https://travis-ci.com/Aidous/apollo_lite_cyber)
 
 As the basic layer of the Apollo autonomous platform, Cyber provides data reliability and timeliness for the application (perception, planning, control, etc.), based on which you can create your own application layer according to your own situation.
 
