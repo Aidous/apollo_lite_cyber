@@ -100,6 +100,7 @@ add_executable(mainboard mainboard/mainboard.cc
 target_link_libraries(mainboard pthread
 					  cyber::cyber_core
 					  cyber::proto)
+set_target_properties(mainboard PROPERTIES LINK_FLAGS "-rdynamic -pthread")
 
 install(TARGETS cyber_binary
 		cyber_state
