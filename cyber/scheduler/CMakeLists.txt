@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 
-add_library(cyber_scheduler processor.cc
+add_library(cyber_scheduler SHARED processor.cc
 			processor_context.cc
 			scheduler.cc
 			scheduler_factory.cc
